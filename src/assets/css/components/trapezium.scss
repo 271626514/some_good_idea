@@ -1,0 +1,113 @@
+.tools-box {
+  &__trapezium {
+    border-bottom: 50px solid $baseColor;
+    // border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    height: 0;
+    width: 150px;
+    line-height: 50px;
+    color: #fff;
+    @include center;
+  }
+
+  &__trapeziumbox {
+    width: 75px;
+    height: 50px;
+    margin-bottom: 10px;
+    float: left;
+    display: block;
+    cursor: pointer;
+
+    &:nth-child(1) {
+      width: 75px;
+      height: 0;
+      border-bottom: 40px solid $baseColor;
+      border-right: 25px solid transparent;
+
+      &:hover {
+        border-bottom: 40px solid $currentBaseColor;
+      }
+
+      &.active  {
+        border-bottom: 40px solid $activeBaseColor;
+      }
+    }
+
+    &:nth-child(2) {
+      width: 75px;
+      height: 0;
+      border-top: 40px solid $baseColor;
+      border-left: 25px solid transparent;
+
+      &:hover {
+        border-top: 40px solid $currentBaseColor;
+      }
+
+      &.active  {
+        border-top: 40px solid $activeBaseColor;
+      }
+    }
+
+    &:nth-child(3) {
+      width: 75px;
+      height: 0;
+      border-top: 40px solid $baseColor;
+      border-right: 25px solid transparent;
+
+      &:hover {
+        border-top: 40px solid $currentBaseColor;
+      }
+
+      &.active  {
+        border-top: 40px solid $activeBaseColor;
+      }
+    }
+
+    &:nth-child(4) {
+      width: 75px;
+      height: 0;
+      border-bottom: 40px solid $baseColor;
+      border-left: 25px solid transparent;
+
+      &:hover {
+        border-bottom: 40px solid $currentBaseColor;
+      }
+
+      &.active  {
+        border-bottom: 40px solid $activeBaseColor;
+      }
+    }
+
+    &:nth-child(5) {
+      width: 75px;
+      height: 0;
+      border-top: 40px solid $baseColor;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+
+      &:hover {
+        border-top: 40px solid $currentBaseColor;
+      }
+
+      &.active  {
+        border-top: 40px solid $activeBaseColor;
+      }
+    }
+
+    &:nth-child(6) {
+      width: 75px;
+      height: 0;
+      border-bottom: 40px solid $baseColor;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+
+      &:hover {
+        border-bottom: 40px solid $currentBaseColor;
+      }
+
+      &.active  {
+        border-bottom: 40px solid $activeBaseColor;
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.tools-box {
+  &__quadrilateral {
+    text-align: center;
+    position: relative;
+    width: 150px;
+    height: 50px;
+    @include center;
+    color: #fff;
+    line-height: 50px;
+  
+    &::before {
+      transform: skew(-30deg);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+      content: ' ';
+      background: $baseColor;
+    }
+
+    &.left_30 {
+      &::before {
+        transform: skew(-30deg);
+      }
+    }
+
+    &.left_45 {
+      &::before {
+        transform: skew(-45deg);
+      }
+    }
+
+    &.left_60 {
+      &::before {
+        transform: skew(-60deg);
+      }
+    }
+
+    &.right_30 {
+      &::before {
+        transform: skew(30deg);
+      }
+    }
+
+    &.right_45 {
+      &::before {
+        transform: skew(45deg);
+      }
+    }
+
+    &.right_60 {
+      &::before {
+        transform: skew(60deg);
+      }
+    }
+  }
+}

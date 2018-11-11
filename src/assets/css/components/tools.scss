@@ -1,0 +1,210 @@
+.tools-box {
+
+  &__wrapper {
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: #f2f2f2;
+  }
+
+  &__form {
+    margin-top: 15px;
+  }
+
+  &__dir {
+    width: 50px;
+    height: 50px;
+    float: left;
+    display: block;
+    cursor: pointer;
+
+    &:nth-child(1) {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 50px 50px 0 0;
+      border-color: $baseColor transparent transparent transparent;
+
+      &:hover {
+        border-color: $currentBaseColor transparent transparent transparent;
+      }
+
+      &.active {
+        border-color: $activeBaseColor transparent transparent transparent;
+      }
+    }
+
+    &:nth-child(2) {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 25px 50px 25px;
+      border-color: transparent transparent $baseColor transparent;
+
+      &:hover {
+        border-color: transparent transparent $currentBaseColor transparent;
+      }
+
+      &.active {
+        border-color: transparent transparent $activeBaseColor transparent;
+      }
+    }
+
+    &:nth-child(3) {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 50px 50px 0;
+      border-color: transparent $baseColor transparent transparent;
+
+      &:hover {
+        border-color: transparent $currentBaseColor transparent transparent;
+      }
+
+      &.active {
+        border-color: transparent $activeBaseColor transparent transparent;
+      }
+    }
+
+    &:nth-child(4) {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 25px 50px 25px 0;
+      border-color: transparent $baseColor transparent transparent;
+
+      &:hover {
+        border-color: transparent $currentBaseColor transparent transparent;
+      }
+
+      &.active {
+        border-color: transparent $activeBaseColor transparent transparent;
+      }
+    }
+
+    &:nth-child(5) {
+      border-radius: 50%;
+      background-color: $baseColor;
+      transform: scale(.6);
+      cursor: default;
+    }
+
+    &:nth-child(6) {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 25px 0 25px 50px;
+      border-color: transparent transparent transparent $baseColor;
+
+      &:hover {
+        border-color: transparent transparent transparent $currentBaseColor;
+      }
+
+      &.active {
+        border-color: transparent transparent transparent $activeBaseColor;
+      }
+    }
+
+    &:nth-child(7) {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 50px 0 0 50px;
+      border-color: transparent transparent transparent $baseColor;
+
+      &:hover {
+        border-color: transparent transparent transparent $currentBaseColor;
+      }
+
+      &.active {
+        border-color: transparent transparent transparent $activeBaseColor;
+      }
+    }
+
+    &:nth-child(8) {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 50px 25px 0 25px;
+      border-color: $baseColor transparent transparent transparent;
+
+      &:hover {
+        border-color: $currentBaseColor transparent transparent transparent;
+      }
+
+      &.active {
+        border-color: $activeBaseColor transparent transparent transparent;
+      }
+    }
+
+    &:nth-child(9) {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 50px 50px;
+      border-color: transparent transparent $baseColor transparent;
+
+      &:hover {
+        border-color: transparent transparent $currentBaseColor transparent;
+      }
+
+      &.active {
+        border-color: transparent transparent $activeBaseColor transparent;
+      }
+    }
+  }
+
+  &__show {
+    position: relative;
+    background: {
+      image: url(../imgs/tools-box__show.png);
+      repeat: repeat;
+    }
+  }
+
+  &__box {
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    @include center;
+  }
+
+  &__code {
+    background: #f2f2f2;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  &__pre {
+    width: 100%;
+    height: 100%;
+
+    & > code {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__form {
+    height: 40px;
+  }
+
+  &__label {
+    text-align: right;
+    width: 30%;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  &__value {
+    text-align: left;
+    width: 70%;
+    padding-right: 20px;
+    box-sizing: border-box;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+  }
+}

@@ -1,0 +1,11 @@
+.tools-box {
+  &__ribbon {
+    width: 130px; 
+    height: 30px; 
+    line-height: 0px;
+    border-top: 30px solid $baseColor; 
+    border-right: 30px solid transparent; 
+    border-bottom: 30px solid $baseColor;
+    @include center;
+  }
+}

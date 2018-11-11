@@ -1,0 +1,31 @@
+.tools-container {
+  width: 100%;
+  min-height: 350px;
+  padding: 10px;
+}
+
+.tools-box, .tools-box__show, .tools-box__code {
+  float: left;
+  width: 33.33%;
+  min-height: 350px;
+  height: 350px;
+}
+
+.tools-box__radio {
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #dcdee2;
+  padding: 0 10px;
+  min-width: 50px;
+  border-radius: 2px;
+  cursor: pointer;
+
+  &.active {
+    background-color: $baseColor;
+    color: #fff;
+    border-color: $baseColor;
+  }
+}
