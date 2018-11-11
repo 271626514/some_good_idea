@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="tools-box__show">
-      <span class="tools-box__quadrilateral" :style="show_quadrilateral" :class="`${show_quadrilateral.type}_${show_quadrilateral.deg}`">
+      <span class="tools-box__quadrilateral" :style="show_quadrilateral" :class="`${code_quadrilateral.type}_${code_quadrilateral.deg}`">
         说明文字
       </span>
     </div>
@@ -41,18 +41,19 @@ const LEFT = 'left'
 const RIGHT = 'right'
 const QUADRILATERAL = {
   [LEFT]: obj => {
-    QUADRILATERAL.setData(obj)
-    obj.show_quadrilateral.type = 'left'
+    QUADRILATERAL.setData(obj, 'left')
   },
   [RIGHT]: obj => {
-    QUADRILATERAL.setData(obj)
-    obj.show_quadrilateral.type = 'right'
+    QUADRILATERAL.setData(obj, 'right')
   },
-  setData: obj => {
-    obj.show_quadrilateral.width = `${obj.code_quadrilateral.width}px`
-    obj.show_quadrilateral.height = `${obj.code_quadrilateral.height}px`
-    obj.show_quadrilateral.lineHeight = `${obj.code_quadrilateral.height}px`
-    obj.show_quadrilateral.deg = `${obj.code_quadrilateral.deg}`
+  setData: (obj, arrow) => {
+    return {
+      width: `${obj.code_quadrilateral.width}px`,
+      height: `${obj.code_quadrilateral.height}px`,
+      lineHeight: `${obj.code_quadrilateral.height}px`,
+      deg: `${obj.code_quadrilateral.deg}`,
+      type: arrow
+    }
   }
 }
 
@@ -67,12 +68,6 @@ export default {
         deg: '30',
         width: 150,
         height: 50
-      },
-      show_quadrilateral: {
-        width: 150,
-        height: 50,
-        type: 'right',
-        deg: '30'
       }
     }
   },
@@ -89,12 +84,8 @@ export default {
     checkDeg (val) {
       this.code_quadrilateral.deg = val
     },
-    // generate () {
-    //   let fn = QUADRILATERAL[this.code_quadrilateral.type]
-    //   fn && fn(this)
-    // },
     show_quadrilateral_code () {
-      let deg = this.show_quadrilateral.type === 'left' ? `${this.show_quadrilateral.deg}deg` : `-${this.show_quadrilateral.deg}deg`
+      let deg = this.code_quadrilateral.type === 'left' ? `${this.code_quadrilateral.deg}deg` : `-${this.code_quadrilateral.deg}deg`
       return `
 {
   width: ${this.code_quadrilateral.width}px;
@@ -102,7 +93,7 @@ export default {
   text-align: center;
   line-height: ${this.code_quadrilateral.height}px;
   ::befor {
-    ransform: skew(${deg});
+    transform: skew(${deg});
     position: absolute;
     left: 0;
     right: 0;
