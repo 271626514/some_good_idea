@@ -1,0 +1,8 @@
+.tools-box {
+  &__gradient {
+    width: 350px; 
+    height: 225px;
+    background: linear-gradient(0deg,#ff0000 , #0101fe);
+    @include center;
+  }
+}

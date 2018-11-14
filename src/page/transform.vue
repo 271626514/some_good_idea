@@ -2,10 +2,11 @@
   <div>
     <vshadow></vshadow>
     <throughLine></throughLine>
+    <gradient></gradient>
   </div>
 </template>
 <script>
-import {vshadow, throughLine} from '@/components/'
+import {vshadow, throughLine, gradient} from '@/components/'
 
 export default {
   name: 'transform',
@@ -15,7 +16,8 @@ export default {
   },
   components: {
     vshadow,
-    throughLine
+    throughLine,
+    gradient
   }
 }
 </script>

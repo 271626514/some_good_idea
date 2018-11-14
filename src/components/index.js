@@ -5,8 +5,10 @@ import quadrilateral from './css/quadrilateral'
 import trapezium from './css/trapezium'
 import sector from './css/sector'
 import ribbon from './css/ribbon'
-import vshadow from './transform/shadow'
 import triangle from './css/triangle'
+import vshadow from './transform/shadow'
+import gradient from './transform/gradient'
+import flex from './transform/flex'
 
 export {
   imgShow,
@@ -17,5 +19,7 @@ export {
   ribbon,
   vshadow,
   vclor,
-  triangle
+  triangle,
+  gradient,
+  flex
 }

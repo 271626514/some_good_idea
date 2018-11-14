@@ -121,10 +121,6 @@ export default {
     checkout (index) {
       this.code_trapezium.type = index
     },
-    // generate () {
-    //   let fn = TRAPEZIUM[this.code_trapezium.type]
-    //   fn && fn(this)
-    // },
     show_trapezium_code () {
       return `
 {
