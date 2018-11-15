@@ -5,15 +5,15 @@
             <i-col :span="spanLeft" class="layout-menu-left">
                 <Menu active-key="1" theme="dark" width="auto">
                     <div class="layout-logo-left"></div>
-                    <Menu-item key="1" name="tag1">
-                        <span class="layout-text">CSS 形状工具</span>
-                    </Menu-item>
-                    <Menu-item key="2" name="tag2">
-                        <span class="layout-text">CSS 样式工具</span>
-                    </Menu-item>
-                    <Menu-item key="3" name="tag3">
-                        <span class="layout-text">图片工具</span>
-                    </Menu-item>
+                    <router-link to="/css">
+                        <Menu-item key="1" name="tag1"><span class="layout-text">CSS 形状工具</span></Menu-item>
+                    </router-link>
+                    <router-link to="/transform">
+                        <Menu-item key="2" name="tag2"><span class="layout-text">CSS 样式工具</span></Menu-item>
+                    </router-link>
+                    <router-link to="/image">
+                        <Menu-item key="3" name="tag3"><span class="layout-text">图片工具</span></Menu-item>
+                    </router-link>
                 </Menu>
             </i-col>
             <i-col :span="spanRight">
@@ -43,7 +43,7 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -96,5 +96,18 @@ export default {
 }
 .ivu-col{
     transition: width .2s ease-in-out;
+}
+.layout-text {
+    color: #fff;
+}
+
+a.router-link-active {
+    span {
+        color: rgb(51, 153, 255);
+    }
+
+    .ivu-menu-item {
+        background-color: #363e4f
+    }
 }
 </style>

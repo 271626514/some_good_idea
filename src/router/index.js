@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import imgShow from '@/components/imgShow'
+import routerImage from '@/page/image'
 import css from '@/page/css'
 import transform from '@/page/transform'
 
@@ -10,8 +10,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'imgShow',
-      component: imgShow
+      name: 'image',
+      component: routerImage
     },
     {
       path: '/css',
@@ -22,6 +22,11 @@ export default new Router({
       path: '/transform',
       name: 'transform',
       component: transform
+    },
+    {
+      path: '/image',
+      name: 'image',
+      component: routerImage
     }
   ]
 })

@@ -57,7 +57,6 @@ export default {
   methods: {
     addColor () {
       // 增加渐变颜色组
-      
     },
     getClolrStart (color) {
       this.code_gradient.colorStart = color.hex8
