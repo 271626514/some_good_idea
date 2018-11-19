@@ -10,6 +10,7 @@ import vshadow from './transform/shadow'
 import gradient from './transform/gradient'
 import flex from './transform/flex'
 import vbase from './image/base'
+import sprites from './image/sprites'
 
 export {
   imgShow,
@@ -23,5 +24,6 @@ export {
   triangle,
   gradient,
   flex,
-  vbase
+  vbase,
+  sprites
 }

@@ -1,16 +1,18 @@
 <template>
   <div>
     <vbase></vbase>
-    <throughLine></throughLine> 
+    <throughLine></throughLine>
+    <sprites></sprites>
   </div>
 </template>
 <script>
-import {vbase, throughLine} from '@/components/'
+import {vbase, throughLine, sprites} from '@/components/'
 export default {
   name: 'routerImage',
   components: {
     vbase,
-    throughLine
+    throughLine,
+    sprites
   }
 }
 </script>

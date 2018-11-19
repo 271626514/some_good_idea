@@ -1,8 +1,15 @@
 <template>
   <div class="tools-container fn-clear">
     <div class="tools-box">
-      <Upload action="//jsonplaceholder.typicode.com/posts/" :before-upload="toBase">
-        <Button type="primary" icon="ios-cloud-upload-outline">转换图片</Button>
+      <Upload
+        type="drag"
+        action="//localhost:8080/index.php" :before-upload="toBase"
+        style="height: 100%;"
+        >
+        <div style="padding: 20px 0;">
+            <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+            <p>点击或将文件拖拽到这里上传</p>
+        </div>
       </Upload>
     </div>
     <div class="tools-box__show">
@@ -15,7 +22,11 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ivu-upload, .ivu-upload-drag {
+  height: 100%;
+}
+</style>
 <script>
 export default {
   name: 'vbase',
@@ -29,8 +40,8 @@ export default {
   methods: {
     toBase (file) {
       let _this = this
-      const reader = new FileReader
-      reader.readAsDataURL(file);
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
       reader.onload = function () {
         _this.base.url = this.result
       }

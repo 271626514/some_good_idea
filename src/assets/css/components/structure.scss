@@ -2,6 +2,10 @@
   width: 100%;
   min-height: 350px;
   padding: 10px;
+
+  &__large {
+    height: 500px;
+  }
 }
 
 .tools-box, .tools-box__show, .tools-box__code {
@@ -9,6 +13,23 @@
   width: 33.33%;
   min-height: 350px;
   height: 350px;
+
+  &__large {
+    height: 500px;
+    float: left;
+    width: 33.33%;
+  }
+}
+
+.tools-show__large {
+  width: 66.66%;
+  height: 500px;
+  float: left;
+  position: relative;
+  background: {
+    image: url(../imgs/tools-box__show.png);
+    repeat: repeat;
+  }
 }
 
 .tools-box__radio {
