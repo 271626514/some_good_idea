@@ -26,6 +26,12 @@
 .ivu-upload, .ivu-upload-drag {
   height: 100%;
 }
+
+.tools-box__base {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
 </style>
 <script>
 export default {

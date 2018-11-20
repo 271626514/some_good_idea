@@ -4,11 +4,13 @@
     <throughLine></throughLine>
     <gradient></gradient>
     <through-line></through-line>
+    <blur></blur>
+    <through-line></through-line>
     <flex></flex>
   </div>
 </template>
 <script>
-import {vshadow, throughLine, gradient, flex} from '@/components/'
+import {vshadow, throughLine, gradient, flex, blur} from '@/components/'
 
 export default {
   name: 'transform',
@@ -20,7 +22,8 @@ export default {
     vshadow,
     throughLine,
     gradient,
-    flex
+    flex,
+    blur
   }
 }
 </script>

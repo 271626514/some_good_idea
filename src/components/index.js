@@ -11,6 +11,7 @@ import gradient from './transform/gradient'
 import flex from './transform/flex'
 import vbase from './image/base'
 import sprites from './image/sprites'
+import blur from './transform/blur'
 
 export {
   imgShow,
@@ -25,5 +26,6 @@ export {
   gradient,
   flex,
   vbase,
-  sprites
+  sprites,
+  blur
 }
