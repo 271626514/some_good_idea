@@ -1,4 +1,3 @@
-import imgShow from './imgShow'
 import throughLine from './common/throughLine'
 import vclor from './common/ColorPicker'
 import quadrilateral from './css/quadrilateral'
@@ -14,7 +13,6 @@ import sprites from './image/sprites'
 import blur from './transform/blur'
 
 export {
-  imgShow,
   quadrilateral,
   trapezium,
   sector,

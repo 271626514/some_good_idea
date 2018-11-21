@@ -13,13 +13,10 @@
       <div class='tools-code__large'>
         <pre v-highlightjs='show_sprites_code()' class='tools-box__pre'><code class='css'></code></pre>
       </div>
-      <Button type='success' long style='margin-top: 15px;' @click='toImage'>生成图片</Button>
+      <Button type='success' long style='margin-top: 15px;' @click='toImage' :disabled="imgs.length === 0">{{imgs.length ===0 ? '生成图片' : '上传成功，点击生成精灵图'}}</Button>
     </div>
     <div class='tools-show__large'>
       <canvas id='canvas' style='min-width: 100%; min-height: 100%;'></canvas>
-      <div class='display:none'>
-        <img :src='item' class='sprites-img__item' v-for='(item, index) in imgs' :key=index />
-      </div>
     </div>
   </div>
 </template>
@@ -32,39 +29,68 @@
 }
 </style>
 <script>
+// 根据图片文件拿到图片实例
+const filesToInstances = (files, callback) => {
+  const length = files.length
+  let instances = []
+  let finished = 0
+
+  files.forEach((file, index) => {
+    const reader = new FileReader()
+    // 把文件读为 dataUrl
+    reader.readAsDataURL(file)
+    reader.onload = e => {
+      const image = new Image()
+      image.src = e.target.result
+      image.onload = () => {
+        // 图片实例化成功后存起来
+        instances[index] = image
+        finished++
+        if (finished === length) {
+          callback(instances)
+        }
+      }
+    }
+  })
+}
+// 拼图
+const drawImages = (images, callback) => {
+  const heights = images.map(item => item.height)
+  const widths = images.map(item => item.width)
+  const canvas = document.querySelector('#canvas')
+  const encoderOptions = 1
+  canvas.width = 500
+  canvas.height = heights.reduce((total, current) => total + current)
+  const context = canvas.getContext('2d')
+
+  let y = 0
+
+  images.forEach((item, index) => {
+    const height = heights[index]
+    const width = widths[index]
+    context.drawImage(item, 0, y, width, height)
+    y += height
+  })
+  callback(canvas.toDataURL('image/png', encoderOptions))
+}
 export default {
   name: 'sprites',
   data () {
     return {
-      imgs: []
+      imgs: [],
+      position: []
     }
   },
   methods: {
     toBase (fileList) {
-      // let _this = this
-      this.img.push(fileList)
-      const reader = new FileReader()
-      reader.readAsDataURL(fileList)
-      reader.onload = function () {
-        let res = this.result
-        let image = new Image()
-        image.src = res
-        // _this.imgs.push(res)
-        // image.onload = function () {
-        //   let _canvas = document.querySelector('#canvas')
-        //   let ctx = _canvas.getContext('2d')
-        //   ctx.fillStyle = 'rgb(200,0,0)'
-        //   _canvas.width = 800
-        //   _canvas.height = 300
-        //   ctx.drawImage(image, 0, 0, image.width, image.height)
-        // }
-      }
+      this.imgs.push(fileList)
     },
     toImage (file) {
-      let _canvas = document.querySelector('#canvas')
-      let ctx = _canvas.getContext('2d')
-      ctx.fillStyle = '#FF0000'
-      ctx.fillRect(0, 0, 150, 75)
+      filesToInstances(this.imgs, instances => {
+        drawImages(instances, finalImageUrl => {
+          console.info('生成成功')
+        })
+      })
     },
     handleFormatError (file) {
       this.notice('文件格式有误')
@@ -80,9 +106,9 @@ export default {
     },
     show_sprites_code () {
       return `
+/* 图片根据从左到右，从上至下的顺序排列 */
 {
   background: url(../sprites.png) no-repeat 0 -110px;
-  ${this.imgs.length}
 }
       `
     }
