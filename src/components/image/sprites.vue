@@ -13,7 +13,7 @@
       <div class='tools-code__large'>
         <pre v-highlightjs='show_sprites_code()' class='tools-box__pre'><code class='css'></code></pre>
       </div>
-      <Button type='success' long style='margin-top: 15px;' @click='toImage' :disabled="imgs.length === 0">{{imgs.length ===0 ? '生成图片' : '上传成功，点击生成精灵图'}}</Button>
+      <Button type='success' long style='margin-top: 15px;' @click='toImage' :disabled="imgsFiles.length === 0">{{imgsFiles.length ===0 ? '生成图片' : '上传成功，点击生成精灵图'}}</Button>
     </div>
     <div class='tools-show__large'>
       <canvas id='canvas' style='min-width: 100%; min-height: 100%;'></canvas>
@@ -41,10 +41,12 @@ const filesToInstances = (files, callback) => {
     reader.readAsDataURL(file)
     reader.onload = e => {
       const image = new Image()
+      const name = file.name
+      const size = file.size
       image.src = e.target.result
       image.onload = () => {
         // 图片实例化成功后存起来
-        instances[index] = image
+        instances[index] = {'img': image, name, size}
         finished++
         if (finished === length) {
           callback(instances)
@@ -54,22 +56,27 @@ const filesToInstances = (files, callback) => {
   })
 }
 // 拼图
-const drawImages = (images, callback) => {
-  const heights = images.map(item => item.height)
-  const widths = images.map(item => item.width)
+const drawImages = (list, callback) => {
+  const heights = list.map(item => item.img.height)
+  const widths = list.map(item => item.img.width)
+  const maxWidths = list.sort((a, b) => a.img.width - b.img.width).reverse()[0].img.width
+  const _list = list.sort((a, b) => a.img.width - b.img.width)
   const canvas = document.querySelector('#canvas')
   const encoderOptions = 1
-  canvas.width = 500
-  canvas.height = heights.reduce((total, current) => total + current)
+  const margin = 10
+  canvas.width = maxWidths
+  canvas.height = heights.reduce((total, current) => {return total + current + margin})
   const context = canvas.getContext('2d')
-
   let y = 0
 
-  images.forEach((item, index) => {
-    const height = heights[index]
-    const width = widths[index]
-    context.drawImage(item, 0, y, width, height)
-    y += height
+  list.forEach((item, index) => {
+    const height = item.img.height
+    const width = item.img.width
+    item.positionY = y
+    item.width = width
+    item.height = height
+    context.drawImage(item.img, 0, y, width, height)
+    y += height + margin
   })
   callback(canvas.toDataURL('image/png', encoderOptions))
 }
@@ -77,18 +84,19 @@ export default {
   name: 'sprites',
   data () {
     return {
-      imgs: [],
-      position: []
+      imgsFiles: [],
+      imgsData: []
     }
   },
   methods: {
-    toBase (fileList) {
-      this.imgs.push(fileList)
+    toBase (file) {
+      this.imgsFiles.push(file)
     },
-    toImage (file) {
-      filesToInstances(this.imgs, instances => {
+    toImage () {
+      filesToInstances(this.imgsFiles, instances => {
         drawImages(instances, finalImageUrl => {
           console.info('生成成功')
+          this.imgsData = instances
         })
       })
     },
@@ -105,12 +113,20 @@ export default {
       })
     },
     show_sprites_code () {
-      return `
-/* 图片根据从左到右，从上至下的顺序排列 */
-{
-  background: url(../sprites.png) no-repeat 0 -110px;
-}
+      let html = ` /* 顺序是由上到下 */
       `
+      for (let i = 0; i < this.imgsData.length; i++) {
+        console.log(this.imgsData)
+        let item = this.imgsData[i]
+        html += `
+.${item.name} {
+  width: ${item.width};
+  height: ${item.height};
+  background: url(../sprites.png) no-repeat 0 -${item.positionY}px;
+}
+        `
+      }
+      return html
     }
   }
 }

@@ -1,6 +1,6 @@
-# css_Pandora
+# FE_Pandora
 
-> css 潘多拉魔盒
+> 前端 潘多拉魔盒
 
 ## Build Setup
 
