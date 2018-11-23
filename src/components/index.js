@@ -11,6 +11,7 @@ import flex from './transform/flex'
 import vbase from './image/base'
 import sprites from './image/sprites'
 import blur from './transform/blur'
+import imageEdit from './image/imageEdit'
 
 export {
   quadrilateral,
@@ -25,5 +26,6 @@ export {
   flex,
   vbase,
   sprites,
-  blur
+  blur,
+  imageEdit
 }

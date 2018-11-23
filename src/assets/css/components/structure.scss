@@ -33,6 +33,13 @@
   }
 }
 
+.no-bg {
+  background: {
+    image: url(../imgs/tools-box__show.png);
+    repeat: repeat;
+  }
+}
+
 .tools-box__radio {
   display: inline-block;
   margin-right: 10px;

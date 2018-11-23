@@ -16,7 +16,7 @@
       <Button type='success' long style='margin-top: 15px;' @click='toImage' :disabled="imgsFiles.length === 0">{{imgsFiles.length ===0 ? '生成图片' : '上传成功，点击生成精灵图'}}</Button>
     </div>
     <div class='tools-show__large'>
-      <canvas id='canvas' style='min-width: 100%; min-height: 100%;'></canvas>
+      <canvas id='canvas'></canvas>
     </div>
   </div>
 </template>
@@ -58,14 +58,14 @@ const filesToInstances = (files, callback) => {
 // 拼图
 const drawImages = (list, callback) => {
   const heights = list.map(item => item.img.height)
-  const widths = list.map(item => item.img.width)
+  // const widths = list.map(item => item.img.width)
   const maxWidths = list.sort((a, b) => a.img.width - b.img.width).reverse()[0].img.width
-  const _list = list.sort((a, b) => a.img.width - b.img.width)
+  // const _list = list.sort((a, b) => a.img.width - b.img.width)
   const canvas = document.querySelector('#canvas')
   const encoderOptions = 1
   const margin = 10
   canvas.width = maxWidths
-  canvas.height = heights.reduce((total, current) => {return total + current + margin})
+  canvas.height = heights.reduce((total, current) => total + current + margin)
   const context = canvas.getContext('2d')
   let y = 0
 
