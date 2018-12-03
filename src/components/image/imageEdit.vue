@@ -53,8 +53,8 @@ export default {
       }
     },
     drawImage (img = this.img.image) {
-      const size = this.img.size / 100
-      const quality = this.img.quality / 100
+      // const size = this.img.size / 100
+      // const quality = this.img.quality / 100
       const width = img.width * (this.img.size / 100)
       const height = img.height * (this.img.size / 100)
       console.log(width)
@@ -63,7 +63,7 @@ export default {
       canvas.width = width
       canvas.height = height
       cxt.drawImage(img, 0, 0, width, height)
-      let _img = canvas.toDataURL('image/png', (this.img.quality / 100))
+      // let _img = canvas.toDataURL('image/png', (this.img.quality / 100))
       // 处理数据
       // var imageData = cxt.getImageData(0, 0, canvas.width, canvas.height);
       // var imageData_length = imageData.data.length / 4;
