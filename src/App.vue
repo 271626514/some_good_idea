@@ -14,6 +14,9 @@
                     <router-link to="/image">
                         <Menu-item key="3" name="tag3"><span class="layout-text">图片工具</span></Menu-item>
                     </router-link>
+                    <router-link to="/other">
+                        <Menu-item key="4" name="tag4"><span class="layout-text">其他工具</span></Menu-item>
+                    </router-link>
                 </Menu>
             </i-col>
             <i-col :span="spanRight">

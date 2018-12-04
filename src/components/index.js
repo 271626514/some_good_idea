@@ -12,6 +12,7 @@ import vbase from './image/base'
 import sprites from './image/sprites'
 import blur from './transform/blur'
 import imageEdit from './image/imageEdit'
+import vqrcode from './other/qrcode'
 
 export {
   quadrilateral,
@@ -27,5 +28,6 @@ export {
   vbase,
   sprites,
   blur,
-  imageEdit
+  imageEdit,
+  vqrcode
 }
