@@ -1,6 +1,6 @@
-# FE_Pandora
+# FE-Dora
 
-> 前端 潘多拉魔盒
+> 菲朵拉
 
 ## Build Setup
 
