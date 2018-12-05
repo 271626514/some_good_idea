@@ -12,6 +12,7 @@
         <div class="tools-box__value fn-right">
           <Slider :value.sync="img.quality" v-model="img.quality" :min="0" :max="100" :step="5" show-input></Slider>
         </div>
+        <div>图片品质修改仅支持jpg格式</div>
       </div>
       <div class="tools-box__form fn-clear">
         <div class="tools-box__label fn-left">图片尺寸：</div>
@@ -19,10 +20,13 @@
           <Slider :value.sync="img.size" v-model="img.size" :min="10" :max="100" :step="5" show-input></Slider>
         </div>
       </div>
+      <div class="tools-box__form fn-clear">
+        <Button type='success' long style='margin-top: 15px;' @click='drawImage'>生成</Button>
+      </div>
     </div>
     <div class='tools-show__large no-bg'>
-      <!-- <img :src="img.image" /> -->
-      <canvas id='canvas-edit'></canvas>
+      <!-- <canvas id='canvas-edit'></canvas> -->
+      <img :src="img.url" id="canvas-wrap" />
     </div>
   </div>
 </template>
@@ -34,7 +38,10 @@ export default {
       img: {
         quality: 50,
         size: 75,
-        image: ''
+        type: 0,
+        img: null,
+        image: '',
+        url: ''
       }
     }
   },
@@ -46,34 +53,24 @@ export default {
       reader.onload = function () {
         let img = new Image()
         img.src = this.result
+        _this.img.img = img
         img.onload = function () {
-          _this.drawImage(img)
           _this.img.image = this.result
         }
       }
     },
-    drawImage (img = this.img.image) {
-      // const size = this.img.size / 100
-      // const quality = this.img.quality / 100
+    drawImage () {
+      let img = this.img.img
+      const quality = this.img.quality / 100
       const width = img.width * (this.img.size / 100)
       const height = img.height * (this.img.size / 100)
-      console.log(width)
-      let canvas = document.querySelector('#canvas-edit')
+      let canvas = document.createElement('canvas')
       let cxt = canvas.getContext('2d')
       canvas.width = width
       canvas.height = height
       cxt.drawImage(img, 0, 0, width, height)
-      // let _img = canvas.toDataURL('image/png', (this.img.quality / 100))
-      // 处理数据
-      // var imageData = cxt.getImageData(0, 0, canvas.width, canvas.height);
-      // var imageData_length = imageData.data.length / 4;
-      // // 解析之后进行算法运算
-      // for (var i = 0; i < imageData_length; i++) {
-      //   imageData.data[i * 4] = 255 - imageData.data[i * 4];
-      //   imageData.data[i * 4 + 1] = 255 - imageData.data[i * 4 + 1];
-      //   imageData.data[i * 4 + 2] = 255 - imageData.data[i * 4 + 2];
-      // }
-      // cxt.putImageData(imageData, 0, 0);
+      let picUrl = canvas.toDataURL('image/jpeg', quality)
+      this.img.url = picUrl
     }
   }
 }

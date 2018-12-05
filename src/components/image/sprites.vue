@@ -58,9 +58,7 @@ const filesToInstances = (files, callback) => {
 // 拼图
 const drawImages = (list, callback) => {
   const heights = list.map(item => item.img.height)
-  // const widths = list.map(item => item.img.width)
   const maxWidths = list.sort((a, b) => a.img.width - b.img.width).reverse()[0].img.width
-  // const _list = list.sort((a, b) => a.img.width - b.img.width)
   const canvas = document.querySelector('#canvas')
   const encoderOptions = 1
   const margin = 10
