@@ -5,14 +5,13 @@
       <Button type="success" style="margin-top: 20px;" @click="() => {qrcode.show = qrcode.text}">生成二维码</Button>
     </div>
     <div class="tools-show" v-if="qrcode.show">
-      <VueQrcode v-model="qrcode.show" :options="{ size: 350 }"></VueQrcode>
     </div>
   </div>
 </template>
 <script>
-import VueQrcode from '@xkeshi/vue-qrcode'
+// 时间日期转化
 export default {
-  name: 'vqrcode',
+  name: 'time',
   data () {
     return {
       qrcode: {
@@ -21,9 +20,7 @@ export default {
       }
     }
   },
-  components: {
-    VueQrcode
-  }
+  components: {}
 }
 </script>
 <style></style>

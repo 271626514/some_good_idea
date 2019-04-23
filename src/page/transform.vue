@@ -6,7 +6,7 @@
     <through-line></through-line>
     <blur></blur>
     <through-line></through-line>
-    <flex></flex>
+    <!-- <flex></flex> -->
   </div>
 </template>
 <script>

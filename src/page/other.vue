@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import { vqrcode, throughLine } from '@/components/'
+import { vqrcode, throughLine, time } from '@/components/'
 
 export default {
   name: 'transform',
@@ -15,7 +15,8 @@ export default {
   },
   components: {
     vqrcode,
-    throughLine
+    throughLine,
+    time
   }
 }
 </script>

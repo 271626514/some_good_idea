@@ -13,6 +13,7 @@ import sprites from './image/sprites'
 import blur from './transform/blur'
 import imageEdit from './image/imageEdit'
 import vqrcode from './other/qrcode'
+import time from './other/time'
 
 export {
   quadrilateral,
@@ -29,5 +30,6 @@ export {
   sprites,
   blur,
   imageEdit,
-  vqrcode
+  vqrcode,
+  time
 }
